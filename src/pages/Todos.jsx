@@ -58,7 +58,12 @@ const Todos = () => {
 
   return (
     <div>
-      <button onClick={toggleLogin}>Log Out</button>
+      <Button
+        style={{ backgroundColor: "purple", fontSize: "22px" }}
+        onClick={toggleLogin}
+      >
+        Log Out
+      </Button>
       <FormContainer onSubmit={onSubmitHandler}>
         <FormTitle>Todo-List</FormTitle>
         <FormGroup>
@@ -178,6 +183,7 @@ const Button = styled.button`
   border-radius: 5px;
   background-color: #103256;
   color: white;
-  margin-left: 10px;
+  margin-top: 30px;
+  margin-left: 150px;
   font-size: 14px;
-`
+`;
