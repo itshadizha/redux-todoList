@@ -10,13 +10,13 @@ export const actionTypes = {
 export const authReducer = (state = initState, action) => {
   switch (action.type) {
     case actionTypes.setTrue:
-      const newStateTrue = { ...state, isLogged: true };
-      localStorage.setItem("isLogged", newStateTrue.isLogged);
+      const newStateTrue = { ...state, isAuth: true };
+      localStorage.setItem("isLogged", newStateTrue.isAuth);
       return newStateTrue;
 
     case actionTypes.setFalse:
-      const newStateFalse = { ...state, isLogged: false };
-      localStorage.setItem("isLogged", newStateFalse.isLogged);
+      const newStateFalse = { ...state, isAuth: false };
+      localStorage.setItem("isLogged", newStateFalse.isAuth);
       return newStateFalse;
 
     default:

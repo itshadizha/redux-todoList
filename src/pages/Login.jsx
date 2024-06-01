@@ -1,44 +1,45 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Form } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { actionTypes } from "../store/reducers/authReducer";
 
 const Login = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const isAuth = useSelector((state) => state.auth.isAuth);
-
   console.log(isAuth);
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-
-    const name = formData.get("email");
-
+    const email = formData.get("email");
     const password = formData.get("password");
 
-    if (name === "hadizhakozubaeva@gmail.com" && password === "222") {
+    if (email === "hadizhakozubaeva@gmail.com" && password === "222") {
       dispatch({ type: actionTypes.setTrue });
+      navigate("/todos");
+    } else {
+      alert("Invalid email or password. Please try again.");
     }
   };
 
-  console.log(isAuth);
+  if (isAuth) {
+    return <p>You are already logged in!</p>;
+  }
 
   return (
     <FormContainer onSubmit={onSubmitHandler}>
-      <FormTitle>Log in </FormTitle>
-
+      <FormTitle>Log in</FormTitle>
       <FormGroup>
         <Label htmlFor="email">Email:</Label>
-        <Input type="email" id="email" name="email" />
+        <Input type="email" id="email" name="email" required />
       </FormGroup>
       <FormGroup>
         <Label htmlFor="password">Password:</Label>
-        <Input type="password" id="password" name="password" />
+        <Input type="password" id="password" name="password" required />
       </FormGroup>
-      <SubmitButton type="submit">Sign Up</SubmitButton>
+      <SubmitButton type="submit">Log In</SubmitButton>
     </FormContainer>
   );
 };

@@ -8,7 +8,7 @@ export const actionTypesTodo = {
   edit: "EDIT_TODO",
   complete: "COMPLETE_TODO",
   deleteAll: "DELETE_ALL",
-  isEditing: "IS_EDITING", // Corrected typo here
+  isEditing: "IS_EDITING", 
 };
 
 export const todoReducer = (state = initState, action) => {

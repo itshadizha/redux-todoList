@@ -1,10 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { Form } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import { actionTypesTodo } from "../store/reducers/todoReducer";
+import { actionTypes } from "../store/reducers/authReducer";
 
 const Todos = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.todo.todos);
 
@@ -23,7 +25,7 @@ const Todos = () => {
       },
     });
 
-    e.target.reset(); // Reset form fields after submission
+    e.target.reset();
   };
 
   const toggleIsComplete = (id) => {
@@ -49,8 +51,14 @@ const Todos = () => {
     });
   };
 
+  const toggleLogin = () => {
+    dispatch({ type: actionTypes.setFalse });
+    navigate("/login");
+  };
+
   return (
     <div>
+      <button onClick={toggleLogin}>Log Out</button>
       <FormContainer onSubmit={onSubmitHandler}>
         <FormTitle>Todo-List</FormTitle>
         <FormGroup>
@@ -170,11 +178,6 @@ const Button = styled.button`
   border-radius: 5px;
   background-color: #103256;
   color: white;
-  margin-left: 150px;
+  margin-left: 10px;
   font-size: 14px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #0056b3;
-  }
-`;
+`
