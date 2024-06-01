@@ -184,6 +184,6 @@ const Button = styled.button`
   background-color: #103256;
   color: white;
   margin-top: 30px;
-  margin-left: 150px;
+  margin-left: 430px;
   font-size: 14px;
 `;
